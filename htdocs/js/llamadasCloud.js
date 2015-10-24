@@ -96,3 +96,56 @@ function obtenerTodosLosDispositivos(funcionCallback) {
         }
     });
 }
+
+function obtenerPreciosHoy(funcionCallback) {
+    $.ajax({
+        method: "GET",
+        url: "http://localhost/db/2001/01/01",
+        data: null,
+        dataType: "json",
+        contentType: "application / json",
+        beforeSend: function (request) {
+            request.setRequestHeader("Fiware-Service", "todosincluidos");
+            request.setRequestHeader("Fiware-ServicePath", "/iot");
+            request.setRequestHeader("Access-Control-Allow-Origin", "http://localhost.com");
+            request.setRequestHeader("X-Auth-Token", "25069ba02efb4e5293f8e3f1e9fe7d81");
+            request.setRequestHeader("Accept", "application/json");
+
+        },
+        success: function (data) {
+            funcionCallback(data);
+        },
+        error: function () {
+            console.log("error al llamar al servidor");
+        }
+    });
+}
+
+function insertarPrecio(funcionCallback) {
+    var obj = {};
+    obj.year = 2015;
+    obj.month = 10;
+    obj.day = 24;
+    obj.hour = 17;
+    obj.pvpc = 34;
+
+    $.ajax({
+        method: "POST",
+        url: "http://localhost/db",
+        data: obj,
+        dataType: "json",
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+        success: function (data) {
+            if (funcionCallback)
+                funcionCallback(data);
+        },
+        error: function (xhr, a, b) {
+            if(xhr.status != 200)
+                console.log("error al llamar al servidor");
+            else
+                if (funcionCallback)
+                    funcionCallback(data);
+
+        }
+    });
+}
