@@ -9,6 +9,16 @@ function totalConsumption(devices) {
     return sum;
 }
 
+function deviceConsumption(device, devices) {
+    var d;
+    for (d in devices) {
+        if (d.name === device) {
+            return d.value;
+        }
+    }
+    return null;
+}
+
 function nowCost(costs) {
     var d, h, c;
     d = new Date();
@@ -18,6 +28,14 @@ function nowCost(costs) {
             return c.pvpc;
         }
     }
+}
+
+function deviceCost(device, devices, cost) {
+    return deviceConsumption(device, devices) * nowCost(cost);
+}
+
+function deviceStatus(device, devices) {
+    return (deviceConsumption(device, devices) < 0.0000001);
 }
 
 function bestCost(costs) {
@@ -34,3 +52,7 @@ function bestCost(costs) {
 function totalCost(devices, cost) {
     return totalConsumption(devices) * nowCost(cost);
 }
+
+
+
+
