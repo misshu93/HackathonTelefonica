@@ -25,8 +25,9 @@ function totalConsumption(devices) {
 
 function deviceConsumption(device, devices) {
     var d = getDevice(device, devices);
-    if(d.status == "true")
+    if (d.status === "true") {
         return parseFloat(d.value);
+    }
     return 0;
 }
 
@@ -45,7 +46,7 @@ function deviceCost(device, devices, cost) {
 }
 
 function deviceStatus(device, devices) {
-    var d = getDevice(device,devices);
+    var d = getDevice(device, devices);
     return d.status;
 }
 
