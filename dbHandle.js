@@ -83,7 +83,6 @@ var post = function(req, res) {
 	    pvpcCar: req.body.pvpcCar
 	});
 	thisHour.save(function(e, data) {
-	    console.log(data);
 	    res.send("{success: 1}");
 	});
     };
