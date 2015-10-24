@@ -72,6 +72,7 @@ var get = function(req, res) {
     retrieve(input, res);
 };
 var post = function(req, res) {
+    var result = []
     for(i in req.body) {
 	if(req.body[i].year
 	   && req.body[i].month
@@ -87,10 +88,12 @@ var post = function(req, res) {
 		pvpc2P: req.body[i].pvpc2P,
 		pvpcCar: req.body[i].pvpcCar
 	    });
-	    thisHour.save();
+	    thisHour.save(function(){
+		result.push({success: 1});
+	    });
 	};
-    };
-    res.send("{success: 'dunno'}");
+    } else { result.push({success: 0}); };
+    res.send(JSON.stringify(result));
 };
 
 module.exports.retrieve = retrieve;
