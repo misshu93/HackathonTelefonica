@@ -1,16 +1,15 @@
 "use strict";
 
 function getHour() {
-    var d;
-    d = new Date();
+    var d = new Date();
     return d.getHours();
 }
 
 function getDevice(device, devices) {
-    var d;
-    for (d in devices) {
-        if (d.name === device) {
-            return d;
+    var count;
+    for (count = 0; count < devices.length; count++) {
+        if (devices[count].name === device) {
+            return devices[count];
         }
     }
 }
@@ -19,7 +18,7 @@ function totalConsumption(devices) {
     var sum, count;
     sum = 0;
     for (count = 0; count < devices.length; count++) {
-        sum = sum + devices[count].value;
+        sum = sum + parseInt(devices[count].value);
     }
     return sum;
 }
