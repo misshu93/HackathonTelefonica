@@ -25,15 +25,15 @@ function totalConsumption(devices) {
 
 function deviceConsumption(device, devices) {
     var d = getDevice(device, devices);
-    return parseI(d.value);
+    return parseFloat(d.value);
 }
 
 function nowCost(costs) {
-    var h, c;
+    var h, count;
     h = getHour();
-    for (c in costs) {
-        if (c.hour === h) {
-            return c.pvpc;
+    for (count = 0; count < costs.length; count++) {
+        if (costs[count].hour === h) {
+            return costs[count].pvpc;
         }
     }
 }
@@ -47,21 +47,21 @@ function deviceStatus(device, devices) {
 }
 
 function bestCost(costs) {
-    var best, c;
+    var best, count;
     best = null;
-    for (c in costs) {
-        if (best === null || c.pvpc < best) {
-            best = c;
+    for (count = 0; count < costs.length; count++) {
+        if (best === null || costs[count].pvpc < best) {
+            best = costs[count];
         }
     }
     return best;
 }
 
 function getCost(hour, costs) {
-    var c;
-    for (c in costs) {
-        if (c.hour === hour) {
-            return c;
+    var count;
+    for (count = 0; count < costs.length; count++) {
+        if (costs[0].hour === hour) {
+            return costs[0];
         }
     }
 }
@@ -77,7 +77,7 @@ function fringeDevice(fringeInf, fringeSup, device, devices, cost) {
     i = fringeInf;
     while (i <= fringeSup) {
         c.push(getCost(i, cost));
-        i = i + 1;
+        i++;
     }
     bestCost(c);
 }
