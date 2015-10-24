@@ -43,7 +43,7 @@ function deviceCost(device, devices, cost) {
 }
 
 function deviceStatus(device, devices) {
-    return (deviceConsumption(device, devices) < 0.0000001);
+    return (deviceConsumption(device, devices) > 0.0000001);
 }
 
 function bestCost(costs) {
@@ -82,4 +82,7 @@ function fringeDevice(fringeInf, fringeSup, device, devices, cost) {
     bestCost(c);
 }
 
-
+function isLimitNear(limit, devices) {
+    var c = totalConsumption(devices);
+    return (c >= limit * 0.90);
+}

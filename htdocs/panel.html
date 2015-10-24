@@ -78,7 +78,7 @@
                         </div>
                         <div class="col-xs-9 text-right">
                             <div><h4>Consumo actual:</h4></div>
-                            <div class="huge">12</div>
+                            <div class="huge"><p id="consumo"></p></div>
                         </div>
                     </div>
                 </div>
@@ -136,8 +136,8 @@
       {{#value}}
       <tr>
         <th>{{name}}</th>
-        <th>{{type}}</th>
-        <th>Encender</th>
+        <th>{{encendido name}}</th>
+        <th>{{activar name}}</th>
         <th>{{value}}</th>
       </tr>
       {{/value}}
@@ -215,17 +215,40 @@
     var source = $("#dispositivos").html();
     var template = Handlebars.compile(source);
     function pintardispositivo(data){
-      context = data.attributes[0];
+      var context = data.attributes[0];
+      Handlebars.registerHelper('encendido', function(name) {
+        status = deviceStatus(name,context.value)
+        console.log(status);
+        if (status == "true"){
+          status = "Encendido";
+        }else{
+          status = "Apagado";
+        }
+        return status;
+      });
+      Handlebars.registerHelper('activar', function(name) {
+        status = deviceStatus(name,context.value)
+        console.log(status);
+        if (status == "true"){
+          activar = "Apagar";
+        }else{
+          activar = "Encender";
+        }
+        return activar;
+      });
       var theCompiledHtml = template(context);
+
+      document.getElementById("consumo").innerHTML =totalConsumption(data.attributes[0].value);
       $('.content-placeholder').html(theCompiledHtml);
+
     }
     obtenerTodosLosDispositivos(pintardispositivo);
 
     </script>
     <script>
     $(document).ready(function () {
-  // console.log(obtenerDatosTarifaHoy());
-   totalConsumption(devices)
+  document.getElementById("consumo").innerHTML =totalConsumption(data.attributes[0].value);
+
   });
     </script>
 
