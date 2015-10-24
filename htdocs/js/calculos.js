@@ -18,14 +18,14 @@ function totalConsumption(devices) {
     var sum, count;
     sum = 0;
     for (count = 0; count < devices.length; count++) {
-        sum = sum + parseInt(devices[count].value);
+        sum = sum + parseFloat(devices[count].value);
     }
     return sum;
 }
 
 function deviceConsumption(device, devices) {
     var d = getDevice(device, devices);
-    return d.value;
+    return parseI(d.value);
 }
 
 function nowCost(costs) {

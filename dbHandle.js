@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/hackathon');
+// This is supposed to be localhost!
+mongoose.connect('mongodb://10.0.14.139/hackathon');
 var db = mongoose.connection;
 
 db.once('open', function(c) {
