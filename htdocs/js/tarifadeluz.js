@@ -8,7 +8,7 @@ function obtenerDatosTarifaHoy() {
 
             var consumo = {};
             consumo.horario = $(listatd[0]).find("b").text();
-            consumo.valorTarifaGeneral = $(listatd[1]).find("b").text();            
+            consumo.valorTarifaGeneral = $(listatd[1]).find("b").text();
 
             consumoHoras.push(consumo);
         });
@@ -31,7 +31,7 @@ function obtenerDatosTarifaHoy() {
         });
     });
 
-   
+
 }
 
 function obtenerDatosTarifaAyer() {
@@ -43,7 +43,7 @@ function obtenerDatosTarifaAyer() {
 
             var consumo = {};
             consumo.horario = $(listatd[0]).find("b").text();
-            consumo.valorTarifaGeneral = $(listatd[1]).find("b").text();            
+            consumo.valorTarifaGeneral = $(listatd[1]).find("b").text();
 
             consumoHoras.push(consumo);
         });
@@ -65,7 +65,7 @@ function obtenerDatosTarifaAyer() {
                 console.log("error al llamar al servidor");
             }
         });
-    });    
+    });
 }
 
 function pruebas() {

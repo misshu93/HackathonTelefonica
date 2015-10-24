@@ -192,76 +192,6 @@
         </div>
     </footer>
 
-    <script src="js/handlebars-v4.0.2.js"></script>
-    <script>
-    var source = $("#dispositivos").html();
-    var template = Handlebars.compile(source);
-
-    context =  {
-        "name": "kwh",
-        "type": "dispositives",
-        "value": [
-          {
-            "name": "Microondas",
-            "type": "float",
-            "value": "0.640"
-          },
-          {
-            "name": "Horno",
-            "type": "float",
-            "value": "0.790"
-          },
-          {
-            "name": "Ordenador Papa",
-            "type": "float",
-            "value": "0.120"
-          },
-          {
-            "name": "Nevera",
-            "type": "float",
-            "value": "0.890"
-          },
-          {
-            "name": "Router",
-            "type": "float",
-            "value": "0.01012"
-          },
-          {
-            "name": "Fogon 1",
-            "type": "float",
-            "value": "1.2"
-          },
-          {
-            "name": "Estufa Salon",
-            "type": "float",
-            "value": "2"
-          },
-          {
-            "name": "Lavadora",
-            "type": "float",
-            "value": "0.350"
-          },
-          {
-            "name": "Lavavajillas",
-            "type": "float",
-            "value": "0.980"
-          },
-          {
-            "name": "Exprimidor",
-            "type": "float",
-            "value": "0.035"
-          },
-          {
-            "name": "Cargador Movil Mama",
-            "type": "float",
-            "value": "0.004"
-          }
-        ]
-      }
-      var theCompiledHtml = template(context);
-      $('.content-placeholder').html(theCompiledHtml);
-      console.log(theCompiledHtml);
-    </script>
 
 
     <!-- Bootstrap Core JavaScript -->
@@ -271,13 +201,34 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
     <script src="js/classie.js"></script>
     <script src="js/cbpAnimatedHeader.js"></script>
-
+    <script src="js/tarifadeluz.js"></script>
+    <script src="js/llamadasCloud.js"></script>
+    <script src="js/calculos.js"></script>
     <!-- Contact Form JavaScript -->
     <script src="js/jqBootstrapValidation.js"></script>
     <script src="js/contact_me.js"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="js/freelancer.js"></script>
+    <script src="js/handlebars-v4.0.2.js"></script>
+    <script>
+    var source = $("#dispositivos").html();
+    var template = Handlebars.compile(source);
+    function pintardispositivo(data){
+      context = data.attributes[0];
+      var theCompiledHtml = template(context);
+      $('.content-placeholder').html(theCompiledHtml);
+    }
+    obtenerTodosLosDispositivos(pintardispositivo);
+
+    </script>
+    <script>
+    $(document).ready(function () {
+  // console.log(obtenerDatosTarifaHoy());
+   totalConsumption(devices)
+  });
+    </script>
+
 
 </body>
 
