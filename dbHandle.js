@@ -71,7 +71,10 @@ var get = function(req, res) {
     retrieve(input, res);
 };
 var post = function(req, res) {
-    if(req.body.hour) {
+    if(req.body.year
+       && req.body.month
+       && req.body.day
+       && req.body.hour) {
 	var thisHour = new pvpcHour({
 	    year: req.body.year,
 	    month: req.body.month,
@@ -85,7 +88,7 @@ var post = function(req, res) {
 	thisHour.save(function(e, data) {
 	    res.send("{success: 1}");
 	});
-    };
+    } else { res.send("{success: 0}") };
 };
 
 module.exports.retrieve = retrieve;
