@@ -7,7 +7,7 @@ var dbHandle = require('./dbHandle');
 app.set('port', (process.env.PORT || 80));
 
 app.use(express.static('htdocs'));
-app.use(parser.urlencoded({ extended: false }));
+app.use(parser.json());
 app.get('/db(/*)?', dbHandle.get);
 app.post('/db(/)?', dbHandle.post);
 app.listen(app.get('port'), function() {
