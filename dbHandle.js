@@ -21,13 +21,24 @@ var pvpcHour = mongoose.model('pvpcSchema', pvpcSchema);
 var retrieve = function(input, res) {
     switch(input.length) {
     case 0:
-	res.send("OK; you've requested WAY too much!");
+	pvpcHour.find({}, function(e, data){
+	    res.send(JSON.stringify(data));
+	});
 	break;
     case 1:
-	res.send("You've requested all the data of a year");
+	pvpcHour.find({
+	    year: input[0]
+	}, function(e, data){
+	    res.send(JSON.stringify(data));
+	});
 	break;
     case 2:
-	res.send("You've requested all the data of a month");
+	pvpcHour.find({
+	    year: input[0],
+	    month: input[1]
+	}, function(e, data){
+	    res.send(JSON.stringify(data));
+	});
 	break;
     case 3:
 	pvpcHour.find({
@@ -35,7 +46,7 @@ var retrieve = function(input, res) {
 	    month: input[1],
 	    day: input[2]
 	}, function(e, data){
-	    console.log(JSON.stringify(data));
+	    res.send(JSON.stringify(data));
 	});
 	break;
     case 4:
