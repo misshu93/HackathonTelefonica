@@ -43,7 +43,7 @@ function deviceCost(device, devices, cost) {
 }
 
 function deviceStatus(device, devices) {
-    return (deviceConsumption(device, devices) < 0.0000001);
+    return (deviceConsumption(device, devices) > 0.0000001);
 }
 
 function bestCost(costs) {
