@@ -158,31 +158,13 @@ function obtenerPreciosHoy(funcionCallback) {
 }
 
 function insertarPrecios(funcionCallback,arrayPrecios) {
-    var arrayPrecios = [];
-    var obj = {};
-    obj.year = 2015;
-    obj.month = 10;
-    obj.day = 24;
-    obj.hour = 17;
-    obj.pvpc = 1;
-
-    var obj2 = {};
-    obj2.year = 2015;
-    obj2.month = 10;
-    obj2.day = 24;
-    obj2.hour = 17;
-    obj2.pvpc = 2;
-
-
-    arrayPrecios.push(obj);
-    arrayPrecios.push(obj2);
-
+    
     $.ajax({
         method: "POST",
         url: "http://localhost/db",
         data: JSON.stringify(arrayPrecios),
         dataType: "json",
-        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+        contentType: "application/json; charset=UTF-8",
         success: function (data) {
             if (funcionCallback)
                 funcionCallback(data);
