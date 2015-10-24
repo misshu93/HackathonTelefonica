@@ -90,3 +90,8 @@ function isLimitNear(limit, devices) {
     var c = totalConsumption(devices);
     return (c >= limit * 0.90);
 }
+
+function isLimitFar(limit, devices) {
+    var c = totalConsumption(devices);
+    return (c >= limit * 0.50);
+}
