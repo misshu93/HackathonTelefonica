@@ -47,21 +47,21 @@ function deviceStatus(device, devices) {
 }
 
 function bestCost(costs) {
-    var best, c;
+    var best, count;
     best = null;
-    for (c in costs) {
-        if (best === null || c.pvpc < best) {
-            best = c;
+    for (count = 0; count < costs.length; count++) {
+        if (best === null || costs[count].pvpc < best) {
+            best = costs[count];
         }
     }
     return best;
 }
 
 function getCost(hour, costs) {
-    var c;
-    for (c in costs) {
-        if (c.hour === hour) {
-            return c;
+    var count;
+    for (count = 0; count < costs.length; count++) {
+        if (costs[0].hour === hour) {
+            return costs[0];
         }
     }
 }
