@@ -16,10 +16,10 @@ function getDevice(device, devices) {
 }
 
 function totalConsumption(devices) {
-    var d, sum;
+    var sum, count;
     sum = 0;
-    for (d in devices) {
-        sum = sum + d.value;
+    for (count = 0; count < devices.length; count++) {
+        sum = sum + devices[count].value;
     }
     return sum;
 }
