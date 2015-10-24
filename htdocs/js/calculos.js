@@ -78,7 +78,7 @@ function fringeDevice(fringeInf, fringeSup, device, devices, cost) {
     i = fringeInf;
     while (i <= fringeSup) {
         c.push(getCost(i, cost));
-        i = i+1;
+        i = i + 1;
     }
     bestCost(c);
 }
