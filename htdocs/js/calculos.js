@@ -51,19 +51,36 @@ function bestCost(costs) {
     var best, c;
     best = null;
     for (c in costs) {
-        if (best === null || c.pvpc < bestCost) {
-            best = c.pvpc;
+        if (best === null || c.pvpc < best) {
+            best = c;
         }
     }
     return best;
+}
+
+function getCost(hour, costs) {
+    var c;
+    for (c in costs) {
+        if (c.hour === hour) {
+            return c;
+        }
+    }
 }
 
 function totalCost(devices, cost) {
     return totalConsumption(devices) * nowCost(cost);
 }
 
-function tryOnDevice(device, devices, cost) {
-    return totalConsumption(devices) * nowCost(cost);
+function fringeDevice(fringeInf, fringeSup, device, devices, cost) {
+    var c, i, d;
+    d = getDevice(device, devices);
+    c = [];
+    i = fringeInf;
+    while (i <= fringeSup) {
+        c.push(getCost(i, cost));
+        i = i+1;
+    }
+    bestCost(c);
 }
 
 
