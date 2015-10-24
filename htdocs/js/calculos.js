@@ -47,7 +47,7 @@ function deviceCost(device, devices, cost) {
 
 function deviceStatus(device, devices) {
     var d = getDevice(device, devices);
-    return d.status;
+    return d.metadatas[0].value;
 }
 
 function bestCost(costs) {
@@ -95,3 +95,4 @@ function isLimitFar(limit, devices) {
     var c = totalConsumption(devices);
     return (c >= limit * 0.50);
 }
+
