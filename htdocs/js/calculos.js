@@ -1,5 +1,20 @@
 "use strict";
 
+function getHour() {
+    var d;
+    d = new Date();
+    return d.getHours();
+}
+
+function getDevice(device, devices) {
+    var d;
+    for (d in devices) {
+        if (d.name === device) {
+            return d;
+        }
+    }
+}
+
 function totalConsumption(devices) {
     var d, sum;
     sum = 0;
@@ -10,19 +25,13 @@ function totalConsumption(devices) {
 }
 
 function deviceConsumption(device, devices) {
-    var d;
-    for (d in devices) {
-        if (d.name === device) {
-            return d.value;
-        }
-    }
-    return null;
+    var d = getDevice(device, devices);
+    return d.value;
 }
 
 function nowCost(costs) {
-    var d, h, c;
-    d = new Date();
-    h = d.getHours();
+    var h, c;
+    h = getHour();
     for (c in costs) {
         if (c.hour === h) {
             return c.pvpc;
@@ -53,6 +62,8 @@ function totalCost(devices, cost) {
     return totalConsumption(devices) * nowCost(cost);
 }
 
-
+function tryOnDevice(device, devices, cost) {
+    return totalConsumption(devices) * nowCost(cost);
+}
 
 
