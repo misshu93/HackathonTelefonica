@@ -1,4 +1,4 @@
 $(document).ready(function () {
 
-    obtenerTodosLosDispositivos(function (data) { debugger; });
+    insertarPrecios(function (data) { debugger; });
 });
