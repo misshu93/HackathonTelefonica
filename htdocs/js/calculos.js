@@ -45,7 +45,8 @@ function deviceCost(device, devices, cost) {
 }
 
 function deviceStatus(device, devices) {
-    return getDevice(device,devices);
+    var d = getDevice(device,devices);
+    return d.status;
 }
 
 function bestCost(costs) {
