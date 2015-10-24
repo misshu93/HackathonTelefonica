@@ -1,4 +1,4 @@
 $(document).ready(function () {
 
-    obtenerDatosTarifaHoy();
+    obtenerTodosLosDispositivos(function (data) { debugger; });
 });
