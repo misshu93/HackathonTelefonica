@@ -91,8 +91,8 @@ var post = function(req, res) {
 	    thisHour.save(function(){
 		result.push({success: 1});
 	    });
-	};
-    } else { result.push({success: 0}); };
+	} else { result.push({success: 0}); };
+    };
     res.send(JSON.stringify(result));
 };
 
