@@ -82,4 +82,7 @@ function fringeDevice(fringeInf, fringeSup, device, devices, cost) {
     bestCost(c);
 }
 
-
+function isLimitNear(limit, devices) {
+    var c = totalConsumption(devices);
+    return (c >= limit * 0.90);
+}
