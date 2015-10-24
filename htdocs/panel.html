@@ -28,6 +28,9 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
 
 </head>
 
@@ -119,36 +122,59 @@
 <div class="panel-heading text-center"><h4>Dispositivos</h4></div>
 <div class="panel-body">
   <!-- Table -->
-  
+<script id="dispositivos" type="text/x-handlebars-template">
   <table class="table">
     <thead>
       <tr>
         <th><h4>Dispositivo</h4></th>
         <th><h4>¿Encendido?</h4></th>
         <th><h4>Encender/Apagar</h4></th>
+        <th><h4>Consumo en kw/h</h4></th>
       </tr>
     </thead>
     <tbody>
+      {{#value}}
       <tr>
-        <th>Lavadora</th>
-        <th>No</th>
+        <th>{{name}}</th>
+        <th>{{type}}</th>
         <th>Encender</th>
+        <th>{{value}}</th>
       </tr>
-      <tr>
-        <th>Horno</th>
-        <th>No</th>
-        <th>Encender</th>
-      </tr>
-      <tr>
-        <th>Plancha</th>
-        <th>No</th>
-        <th>Encender</th>
-      </tr>
+      {{/value}}
     </tbody>
   </table>
+</script>
+<div class="content-placeholder"></div>
+</div>
+</div>
+
+  <div class="panel panel-primary">
+  <div class="panel-heading text-center"><h4>Sensores</h4></div>
+  <div class="panel-body">
+    <!-- Table -->
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th><h4>Temperatura</h4></th>
+          <th><h4>Humedad</h4></th>
+          <th><h4>Luz</h4></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Lavadora</th>
+          <th>No</th>
+          <th>Encender</th>
+        </tr>
+      </tbody>
+    </table>
 
 </div>
 
+<table id="excelDataTable" border="1">
+  </table>
+</body>​
 
 </div>
 </div>
@@ -166,8 +192,77 @@
         </div>
     </footer>
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="js/handlebars-v4.0.2.js"></script>
+    <script>
+    var source = $("#dispositivos").html();
+    var template = Handlebars.compile(source);
+
+    context =  {
+        "name": "kwh",
+        "type": "dispositives",
+        "value": [
+          {
+            "name": "Microondas",
+            "type": "float",
+            "value": "0.640"
+          },
+          {
+            "name": "Horno",
+            "type": "float",
+            "value": "0.790"
+          },
+          {
+            "name": "Ordenador Papa",
+            "type": "float",
+            "value": "0.120"
+          },
+          {
+            "name": "Nevera",
+            "type": "float",
+            "value": "0.890"
+          },
+          {
+            "name": "Router",
+            "type": "float",
+            "value": "0.01012"
+          },
+          {
+            "name": "Fogon 1",
+            "type": "float",
+            "value": "1.2"
+          },
+          {
+            "name": "Estufa Salon",
+            "type": "float",
+            "value": "2"
+          },
+          {
+            "name": "Lavadora",
+            "type": "float",
+            "value": "0.350"
+          },
+          {
+            "name": "Lavavajillas",
+            "type": "float",
+            "value": "0.980"
+          },
+          {
+            "name": "Exprimidor",
+            "type": "float",
+            "value": "0.035"
+          },
+          {
+            "name": "Cargador Movil Mama",
+            "type": "float",
+            "value": "0.004"
+          }
+        ]
+      }
+      var theCompiledHtml = template(context);
+      $('.content-placeholder').html(theCompiledHtml);
+      console.log(theCompiledHtml);
+    </script>
+
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
