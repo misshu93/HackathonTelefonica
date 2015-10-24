@@ -1,0 +1,30 @@
+{
+    "name": "HackathonTelefónica",
+    "version": "0.0.0.1",
+    "description": "Software para resucitar gatitos",
+    "keywords": [
+	"Telefónica",
+	"Node.js",
+	"application"
+    ],
+    "author": {
+	"name": "misshu93"
+    },
+    "contributors": [{
+	"name": "Francisco Gómez",
+	"email": "espectalll123@kydara.com"
+    } {
+	"name": "Javier"
+    } {
+	"name": "Sergio"
+    }],
+    "homepage": "https://github.com/misshu93/HackathonTelefonica",
+    "repository": {
+	"type": "git"
+    },
+    "engines": {
+	"node": ">= 0.6.0",
+	"npm": ">= 1.0.0"
+    },
+    "main": "server.js"
+}
