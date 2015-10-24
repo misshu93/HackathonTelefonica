@@ -72,24 +72,26 @@ var get = function(req, res) {
     retrieve(input, res);
 };
 var post = function(req, res) {
-    if(req.body.year
-       && req.body.month
-       && req.body.day
-       && req.body.hour) {
-	var thisHour = new pvpcHour({
-	    year: req.body.year,
-	    month: req.body.month,
-	    day: req.body.day,
-	    hour: req.body.hour,
+    for(entry in req.body) {
+	if(entry.year
+	   && req.body.month
+	   && req.body.day
+	   && req.body.hour) {
+	    var thisHour = new pvpcHour({
+		year: req.body.year,
+		month: req.body.month,
+		day: req.body.day,
+		hour: req.body.hour,
 
-	    pvpc: req.body.pvpc,
-	    pvpc2P: req.body.pvpc2P,
-	    pvpcCar: req.body.pvpcCar
-	});
-	thisHour.save(function(e, data) {
-	    res.send("{success: 1}");
-	});
-    } else { res.send("{success: 0}") };
+		pvpc: req.body.pvpc,
+		pvpc2P: req.body.pvpc2P,
+		pvpcCar: req.body.pvpcCar
+	    });
+	    thisHour.save(function(e, data) {
+		res.send("{success: 1}");
+	    });
+	} else { res.send("{success: 0}") };
+    };
 };
 
 module.exports.retrieve = retrieve;
