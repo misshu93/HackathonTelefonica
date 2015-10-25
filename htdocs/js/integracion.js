@@ -1,4 +1,4 @@
-
+﻿
 var context;
 var desde, hasta;
 var lista;
@@ -33,7 +33,7 @@ function pintarAlertas(data) {
 function generarAlertas(c) {
     // Consumo eléctrico
     var alerts = [];
-    var isExceeded = limitState(7.02, context);
+    var isExceeded = limitState(7.02, context.value);
     if (isExceeded == 1) {
 	alerts.push({
 	    name: "Consumo eléctrico",
