@@ -46,7 +46,7 @@ var retrieve = function(input, res) {
 	pvpcHour.find({
 	    year: input[0],
 	    month: input[1]
-	}.sort({
+	}).sort({
 	    day: 'asc',
 	    hour: 'asc'
 	}).exec(function(e, data){
