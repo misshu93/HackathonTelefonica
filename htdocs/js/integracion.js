@@ -10,11 +10,18 @@ function pintarDispositivo(data) {
 
     var theCompiledHtml = template(context);
 
-    $("#consumo").text(totalCost(data.attributes[0].value, costes) + "€ / hora");
+    $("#consumo").text(totalCost(data.attributes[0].value, costes) + " € / hora");
     $("#precioKwhActual").text(nowCost(costes).pvpc + "€");
     $('.content-placeholder').html(theCompiledHtml);
 
     generarAlertas(pintarAlertas);
+}
+
+function refrescarDispositivos(data) {
+    var source = $("#dispositivos").html();
+    var template = Handlebars.compile(source);
+    var theCompiledHtml = template(data);
+    $('.content-placeholder').empty().html(theCompiledHtml);
 }
 
 function pintarAlertas(data) {
@@ -127,19 +134,18 @@ function encenderApagarClick(nombre, accion) {
     for (i in context.value) {
         //console.log(context.value[i]);
         if (context.value[i].name == nombre) {
-            var encendido = !(context.value[i].metadatas[0].value);
+            var encendido;
 
-            encendido = encendido.toString();
+            if (accion == "encender")
+                encendido = "false";
+            else
+                encendido = "true";
             context.value[i].metadatas[0].value = encendido;
 
         }
     }
-    if (accion == "encender")
-        alert("encender: " + nombre);
-    else
-        alert("apagar: " + nombre);
     console.log(context);
-    encenderApagar(function () { }, context);
+    encenderApagar(function () { refrescarDispositivos(context); }, context);
 }
 obtenerTodosLosDispositivos(listarDispositivo);
 
