@@ -24,12 +24,30 @@ function pintarAlertas(data) {
 }
 
 function generarAlertas(c) {
-    limitState(7.02, context);
-    c({
-	name: "Hola",
-	description: "Ninoninonino",
-	type: "success"
-    });
+    // Consumo eléctrico
+    var alerts = [];
+    var isExceeded = limitState(7.02, context);
+    if (isExceeded = 1) {
+	alerts.push({
+	    name: "Consumo eléctrico",
+	    description: "Se está acercando al límite",
+	    type: "danger"
+	});
+    } else if (isExceeded = 0) {
+	alerts.push({
+	    name: "Consumo eléctrico",
+	    description: "El consumo es alto",
+	    type: "warning"
+	});
+    } else {
+	alerts.push({
+	    name: "Consumo eléctrico",
+	    description: "No hay problemas con el consumo",
+	    type: "success"
+	});
+    };
+    console.log(alerts);
+    c(alerts);
 };
 
 obtenerTodosLosDispositivos(pintarDispositivo);
