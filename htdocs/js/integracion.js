@@ -12,9 +12,11 @@ function pintarDispositivo(data) {
 
     $("#consumo").text(totalCost(data.attributes[0].value, costes) + " € / hora");
     $("#precioKwhActual").text(nowCost(costes).pvpc + "€");
-    $('.content-placeholder').html(theCompiledHtml);
+        $('.content-placeholder').html(theCompiledHtml);
 
-    generarAlertas(pintarAlertas);
+    var alertas = [];
+    generarAlertaEnergia(alertas);
+    generarAlertaLuz(alertas, pintarAlertas);
 }
 
 function refrescarDispositivos(data) {
@@ -23,7 +25,9 @@ function refrescarDispositivos(data) {
     var theCompiledHtml = template(data);
     $('.content-placeholder').empty().html(theCompiledHtml);
 
-    generarAlertas(pintarAlertas);
+    var alertas = [];
+    generarAlertaEnergia(alertas);
+    generarAlertaLuz(alertas, pintarAlertas);
 }
 
 function pintarAlertas(data) {
@@ -32,18 +36,17 @@ function pintarAlertas(data) {
     $('#alert-placeholder').html(template(data));
 }
 
-function generarAlertas(c) {
+function generarAlertaEnergia(alerts) {
     // Consumo eléctrico
-    var alerts = [];
-    var isExceeded = limitState(7.02, context.value);
-    if (isExceeded == 1) {
+    var isPowerExceeded = limitState(7.02, context.value);
+    if (isPowerExceeded == 1) {
 	alerts.push({
 	    name: "Consumo eléctrico",
 	    description: "Se está acercando al límite",
 	    type: "danger"
 	});
 	ponerColor("rojo");
-    } else if (isExceeded == 0) {
+    } else if (isPowerExceeded == 0) {
 	alerts.push({
 	    name: "Consumo eléctrico",
 	    description: "El consumo es alto",
@@ -58,7 +61,29 @@ function generarAlertas(c) {
 	});
 	ponerColor("verde");
     };
-    c(alerts);
+    return alerts;
+}
+
+function generarAlertaLuz(alerts, c) {
+    obtenerLuminosidad(function(data){
+	var isLightExceeded = !limitLight(data['attributes'][0]['value']);
+	if (isLightExceeded) {
+	    alerts.push({
+		name: "Iluminación",
+		description: "Hay una cantidad excesiva de luz",
+		type: "danger"
+	    });
+	    c(alerts);
+	} else {
+	    alerts.push({
+		name: "Iluminación",
+		description: "La iluminación es adecuada",
+		type: "info"
+	    });
+	    console.log(alerts);
+	    c(alerts);
+	};
+    });
 };
 
 obtenerTodosLosDispositivos(pintarDispositivo);
