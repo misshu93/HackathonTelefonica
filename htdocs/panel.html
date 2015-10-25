@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -151,30 +151,17 @@
 </div>
 </div>
 
-  <div class="panel panel-primary">
+<div class="panel panel-primary">
   <div class="panel-heading text-center"><h4>Sensores</h4></div>
   <div class="panel-body">
-    <!-- Table -->
-
-    <table class="table">
-      <thead>
-        <tr>
-          <th><h4>Temperatura</h4></th>
-          <th><h4>Humedad</h4></th>
-          <th><h4>Luz</h4></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th>Lavadora</th>
-          <th>No</th>
-          <th>Encender</th>
-        </tr>
-      </tbody>
-    </table>
-
+  <script id="avisos" type="text/x-handlebars-template">
+  <div class="alert alert-{{alert name}}">
+    <h4>{{name}}</h4>
+    <p>{{description name}}</p>
+  </div>
+  </script>
+  </div>
 </div>
-
 
 </div>
 <div class="panel panel-primary">
