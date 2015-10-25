@@ -309,11 +309,11 @@ public class MainWindow extends javax.swing.JFrame {
         for (int j = 0; j < dispositives.length(); j++) {
             String name = dispositives.getJSONObject(j).getString("name");
             int index = entities.indexOf(new Entity(name, "", true));
-            double value = Double.valueOf(dispositives.getJSONObject(j).getString("value"));
-            if (value < 0.000000000001) {
-                entities.get(index).setStatus(false);
-            } else {
+            boolean value = Boolean.valueOf(dispositives.getJSONObject(j).getJSONArray("metadatas").getJSONObject(0).getBoolean("value"));
+            if (value) {
                 entities.get(index).setStatus(true);
+            } else {
+                entities.get(index).setStatus(false);
             }
         }
     }
