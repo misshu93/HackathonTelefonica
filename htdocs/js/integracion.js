@@ -77,13 +77,16 @@ $(document).ready(function () {
           listarHorasHasta();
       });
 
-    $("#calcular").click(function () {
-        device = document.getElementById("Dispositivo").value;
-        var desde = document.getElementById("Desde").value;
-        var hasta = document.getElementById("Hasta").value;
-        calculo = fringeBestCost(desde, hasta, costes);
-        console.log(calculo);
-    });
+});
+$("#calcular").click(function () {
+    device = document.getElementById("Dispositivo").value;
+    var desde = document.getElementById("Desde").value;
+    var hasta = document.getElementById("Hasta").value;
+
+    $("#datos").show(500);
+
+    calculo = fringeBestCost(desde, hasta, costes);
+    console.log(calculo);
 
 });
 function preciosHoy(cost) {
@@ -116,7 +119,7 @@ function listarHorasDesde(fun){
     if(fun != null){
         fun();
     }
-       
+
 }
 
 function listarHorasHasta(){
@@ -151,4 +154,3 @@ function encenderApagarClick(nombre, accion) {
     encenderApagar(function () { refrescarDispositivos(context); }, context);
 }
 obtenerTodosLosDispositivos(listarDispositivo);
-

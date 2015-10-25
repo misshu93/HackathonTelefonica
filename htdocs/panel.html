@@ -176,38 +176,73 @@
   <form class="form-horizontal">
   <fieldset>
 
-<!-- Select Basic -->
+  <!-- Select Basic -->
   <div class="form-group">
-    <div class="col-md-4 col-md-offset-4">
-      <label class="col-md-4 control-label" for="Dispositivo">Dispositivo</label>
+    <div class="row">
+    <div class="col-md-3 col-md-offset-3">
+      <label class="col-md-3 control-label" for="Dispositivo">Dispositivo</label>
           <select id="Dispositivo" name="Dispositivo" class="form-control">
           </select>
     </div>
-  </div>
-
-  <div class="form-group">
-    <label class="col-md-4 control-label" for="Desde">Desde</label>
-    <div class="col-md-4">
+    <div class="col-md-1">
+      <label class="col-md-1 control-label" for="Desde">Desde</label>
       <select id="Desde" name="Desde" class="form-control">
       </select>
     </div>
+    <div class="col-md-1">
+      <label class="col-md-1 control-label" for="Hasta">Hasta</label>
+      <select id="Hasta" name="Hasta" class="form-control">
+      </select>
+    </div>
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-md-3 col-md-offset-5">
+    <a id="calcular" class="btn btn-info">Calcular</a>
   </div>
 
-<!-- Select Basic -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="Hasta">Hasta</label>
-  <div class="col-md-4">
-    <select id="Hasta" name="Hasta" class="form-control">
-    </select>
   </div>
-</div>
+  <br><br>
+  <div class="row" id="datos" style="display: none;">
+  <div class="col-md-4 col-md-offset-2 text-center">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Mejor franja limitada</div>
+      <div class="panel-body">
+      <p id="mejor-franja"></p>
+      </div>
+    </div>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Ahorro</div>
+      <div class="panel-body">
+      <p id="ahorro-limitado"></p>
+      </div>
+    </div>
+    <div class="col-md-3 col-md-offset-4">
+      <button  class="btn btn-info">Programar</button>
+    </div>
+  </div>
+  <div class="col-md-4 text-center">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Mejor franja del día</div>
+      <div class="panel-body">
+      <p id="mejor-franja-dia"></p>
+      </div>
+    </div>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Ahorro</div>
+      <div class="panel-body">
+      <p id="ahorro-dia"></p>
+      </div>
+    </div>
+    <div class="col-md-3 col-md-offset-4">
+      <button  class="btn btn-info">Programar</button>
+    </div>
+  </div>
+  </div>
+  </div>
 
-</fieldset>
-</form>
-<div class="col-md-4">
-  <button id="calcular">Calcular</button>
-  <div class="panel panel-primary" id="mejor-franja"></div>
-</div>
+  </fieldset>
+  </form>
 </div>
 
 
