@@ -34,14 +34,14 @@ function generarAlertas(c) {
     // Consumo eléctrico
     var alerts = [];
     var isExceeded = limitState(7.02, context);
-    if (isExceeded = 1) {
+    if (isExceeded == 1) {
 	alerts.push({
 	    name: "Consumo eléctrico",
 	    description: "Se está acercando al límite",
 	    type: "danger"
 	});
 	ponerColor("rojo");
-    } else if (isExceeded = 0) {
+    } else if (isExceeded == 0) {
 	alerts.push({
 	    name: "Consumo eléctrico",
 	    description: "El consumo es alto",
