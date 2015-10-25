@@ -113,6 +113,10 @@ $("#calcular").click(function () {
     var ahorroLimitado = savingDevice(mejorFranja, costes, device,context.value);
     var mejorFranjaDia = bestCostNow(costes).hour + ":00 - " + (bestCostNow(costes).hour + 1) + ":00"
     var ahorroDia = savingDevice(bestCostNow(costes), costes, device,context.value);
+    $("#mejor-franja-mejor").empty();
+    $("#ahorro-limitado").empty();
+    $("#mejor-franja-dia").empty();
+    $("#ahorro-dia").empty();
     $("#mejor-franja-mejor").append(mejorFranja.hour + ":00 - " + (mejorFranja.hour + 1) + ":00");
     $("#ahorro-limitado").append(ahorroLimitado);
     $("#mejor-franja-dia").append(mejorFranjaDia);
