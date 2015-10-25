@@ -14,21 +14,25 @@ function pintarDispositivo(data) {
     $("#precioKwhActual").text(nowCost(costes).pvpc + "€");
     $('.content-placeholder').html(theCompiledHtml);
 
+    generarAlertas(pintarAlertas);
 }
 
-function pintarAlertas() {
+function pintarAlertas(data) {
     var source = $("#avisos").html();
     var template = Handlebars.compile(source);
-    context = {
-        name: "Hola",
-        description: "Ninoninonino",
-        type: "success"
-    };
-    $('#alert-placeholder').html(template(context));
+    $('#alert-placeholder').html(template(data));
 }
 
+function generarAlertas(c) {
+    limitState(7.02, context);
+    c({
+	name: "Hola",
+	description: "Ninoninonino",
+	type: "success"
+    });
+};
+
 obtenerTodosLosDispositivos(pintarDispositivo);
-pintarAlertas();
 
 $(document).ready(function () {
 
