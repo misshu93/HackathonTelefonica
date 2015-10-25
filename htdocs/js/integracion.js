@@ -1,4 +1,4 @@
-﻿
+
 var context;
 var desde, hasta;
 var lista;
@@ -44,15 +44,13 @@ $(document).ready(function () {
             return options.inverse(this);
         };
     });
-
-    $("#Desde").click(function () {
-        desde = document.getElementById("Desde").value;
+        listarHorasDesde(listarHorasHasta);
+      $( "#Desde" ).change(function() {
+          $("#Hasta").empty();
+          listarHorasHasta();
         console.log(desde);
-    });
-    $("#Hasta").click(function () {
-        hasta = document.getElementById("Hasta").value;
-        console.log(hasta);
-    });
+      });
+
     $("#calcular").click(function () {
         device = document.getElementById("Dispositivo").value;
         calculo = fringeBestCost(desde, hasta, costes);
@@ -77,6 +75,32 @@ function listarDispositivo(data) {
   );
 
 }
+
+
+function listarHorasDesde(fun){
+  var count;
+    for(count = getHour();count<24; count++){
+        $("#Desde").append($("<option>",{
+      value: count,
+      text: count
+    }))
+    }
+    if(fun != null){
+        fun();
+    }
+       
+}
+
+function listarHorasHasta(){
+  var count;
+    for(count = parseInt(document.getElementById("Desde").value)+1;count<25; count++){
+        $("#Hasta").append($("<option>",{
+      value: count,
+      text: count
+    }))
+    }
+}
+
 
 function encenderApagarClick(nombre, accion) {
     //modificar context para encender o apagar
