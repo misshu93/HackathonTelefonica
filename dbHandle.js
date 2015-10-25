@@ -22,14 +22,23 @@ var pvpcHour = mongoose.model('pvpcSchema', pvpcSchema);
 var retrieve = function(input, res) {
     switch(input.length) {
     case 0:
-	pvpcHour.find({}, function(e, data){
+	pvpcHour.find().sort({
+	    year: 'asc',
+	    month: 'asc',
+	    day: 'asc',
+	    hour: 'asc'
+	}).exec(function(e, data){
 	    res.send(JSON.stringify(data));
 	});
 	break;
     case 1:
 	pvpcHour.find({
 	    year: input[0]
-	}, function(e, data){
+	}).sort({
+	    month: 'asc',
+	    day: 'asc',
+	    hour: 'asc'
+	}).exec(function(e, data){
 	    res.send(JSON.stringify(data));
 	});
 	break;
@@ -37,7 +46,10 @@ var retrieve = function(input, res) {
 	pvpcHour.find({
 	    year: input[0],
 	    month: input[1]
-	}, function(e, data){
+	}.sort({
+	    day: 'asc',
+	    hour: 'asc'
+	}).exec(function(e, data){
 	    res.send(JSON.stringify(data));
 	});
 	break;
@@ -46,7 +58,9 @@ var retrieve = function(input, res) {
 	    year: input[0],
 	    month: input[1],
 	    day: input[2]
-	}, function(e, data){
+	}.sort({
+	    hour: 'asc'
+	}).exec(function(e, data){
 	    res.send(JSON.stringify(data));
 	});
 	break;
