@@ -21,7 +21,7 @@ function actualizarDatosWebTariaDeLuzHoy() {
             consumoHoras.push(consumo);
         });
 
-        insertarPrecios(function () { },consumoHoras);
+        insertarPrecios(function () { console.log("Datos web insertados"); },consumoHoras);
     });
 
 

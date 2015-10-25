@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -128,8 +128,19 @@
       {{#value}}
       <tr>
         <th>{{name}}</th>
-        <th>{{encendido name}}</th>
-        <th>{{activar name}}</th>
+          <th style="color: {{#ifStatus}}green{{else}}red{{/ifStatus}}">
+              {{#ifStatus}}Encendido{{else}}Apagado{{/ifStatus}}
+          </th>
+          <th>
+              <button type="button" class="btn btn-{{#ifStatus}}danger{{else}}success{{/ifStatus}}"
+                      onclick="encenderApagarClick('{{name}}','{{#ifStatus}}encender{{else}}apagar{{/ifStatus}}')">
+                  {{#ifStatus}}
+                  Apagar
+                  {{else}}
+                  Encender
+                  {{/ifStatus}}
+              </button>
+          </th>
         <th>{{value}}</th>
       </tr>
       {{/value}}

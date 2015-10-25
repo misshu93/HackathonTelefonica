@@ -7,25 +7,7 @@ function pintarDispositivo(data){
   var source = $("#dispositivos").html();
   var template = Handlebars.compile(source);
   context = data.attributes[0];
-  Handlebars.registerHelper('encendido', function(name) {
-    status = deviceStatus(name,context.value)
-
-    if (status == "true"){
-      status = "Encendido";
-    }else{
-      status = "Apagado";
-    }
-    return status;
-  });
-  Handlebars.registerHelper('activar', function(name) {
-    status = this.metadatas[0].value;
-    if (status == "true"){
-      activar = "Apagar";
-    }else{
-      activar = "Encender";
-    }
-    return activar;
-  });
+  
   var theCompiledHtml = template(context);
 
   document.getElementById("consumo").innerHTML =totalConsumption(data.attributes[0].value);
@@ -35,6 +17,15 @@ function pintarDispositivo(data){
 obtenerTodosLosDispositivos(pintarDispositivo);
 
 $(document).ready(function () {
+
+    Handlebars.registerHelper('ifStatus', function (options) {
+        status = this.metadatas[0].value;
+        if (status == "true") {
+            return options.fn(this);
+        } else {
+            return options.inverse(this);
+        };
+    });
 
   $( "#Desde" ).click(function() {
       desde = document.getElementById("Desde").value;
@@ -65,7 +56,15 @@ function listarDispositivo(data){
   }
 );
 
+}
 
+function encenderApagarClick(nombre, accion) {
+    if (accion == "encender")
+        alert("encender: " + nombre);
+    else
+        alert("apagar: " + nombre);
+
+    encenderApagar(function () { }, context)
 }
 obtenerTodosLosDispositivos(listarDispositivo);
 document.getElementById("mejor-franja").innerHTML = bestCostNow(costes);
