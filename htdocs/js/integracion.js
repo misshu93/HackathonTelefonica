@@ -14,7 +14,20 @@ function pintarDispositivo(data) {
   $('.content-placeholder').html(theCompiledHtml);
 
 }
+
+function pintarAlertas() {
+    var source = $("#avisos").html();
+    var template = Handlebars.compile(source);
+    context = {
+	name: "Hola",
+	description: "Ninoninonino",
+	type: "success"
+    };
+    $('#alert-placeholder').html(template(context));
+}
+
 obtenerTodosLosDispositivos(pintarDispositivo);
+pintarAlertas();
 
 $(document).ready(function () {
 
