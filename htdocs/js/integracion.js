@@ -2,6 +2,7 @@
 var context;
 var desde,hasta;
 var lista;
+var costes;
 function pintarDispositivo(data){
   var source = $("#dispositivos").html();
   var template = Handlebars.compile(source);
@@ -45,12 +46,15 @@ $(document).ready(function () {
       });
   $( "#calcular" ).click(function() {
       device = document.getElementById("Dispositivo").value;
-      calculo = fringeDevice(desde,hasta,device,lista);
-      console.log(calculo);
+      calculo = fringeBestCost(desde,hasta,costes);
+      //console.log(calculo);
       });
 
 });
-
+function preciosHoy(costes){
+  console.log(costes);
+}
+obtenerPreciosHoy(preciosHoy);
 function listarDispositivo(data){
   lista = data.attributes[0].value;
   $.each(lista,function(i,item){
@@ -64,4 +68,4 @@ function listarDispositivo(data){
 
 }
 obtenerTodosLosDispositivos(listarDispositivo);
-document.getElementById("mejor-franja").innerHTML = bestCost()
+document.getElementById("mejor-franja").innerHTML = bestCostNow(costes);
