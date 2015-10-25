@@ -1,9 +1,9 @@
 
 var context;
-var desde,hasta;
+var desde, hasta;
 var lista;
 var costes;
-function pintarDispositivo(data){
+function pintarDispositivo(data) {
   var source = $("#dispositivos").html();
   var template = Handlebars.compile(source);
   context = data.attributes[0];
@@ -45,7 +45,7 @@ $(document).ready(function () {
 function preciosHoy(cost) {
     costes = cost;
     console.log(costes);
-    document.getElementById("mejor-franja").innerHTML = bestCostNow(costes).pvpc;
+    document.getElementById("mejor-franja").innerHTML = bestCostNow(costes).hour+":00 - "+(bestCostNow(costes).hour+1)+":00";
 }
 obtenerPreciosHoy(preciosHoy);
 function listarDispositivo(data){
