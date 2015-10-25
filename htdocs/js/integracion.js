@@ -1,4 +1,4 @@
-
+﻿
 var context;
 var desde, hasta;
 var lista;
@@ -10,7 +10,7 @@ function pintarDispositivo(data) {
   
   var theCompiledHtml = template(context);
 
-  document.getElementById("consumo").innerHTML =totalCost(data.attributes[0].value, costes);
+  $("#consumo").text(totalCost(data.attributes[0].value, costes)+ "€ / hora");
   $('.content-placeholder').html(theCompiledHtml);
 
 }
