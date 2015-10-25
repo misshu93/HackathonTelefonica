@@ -1,5 +1,5 @@
 ﻿
-function ponerColor(color) {
+function ponerColor(color, funcionCallback) {
     var value = {};
 
     switch (color)
@@ -10,6 +10,9 @@ function ponerColor(color) {
         case "verde":
             value.value = "0,1,0";
             break;
+	case "amarillo":
+	    value.value = "1,1,0";
+	    break;
         case "azul":
             value.value = "0,0,1";
             break;
