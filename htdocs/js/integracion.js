@@ -42,8 +42,10 @@ $(document).ready(function () {
       });
 
 });
-function preciosHoy(costes){
-  console.log(costes);
+function preciosHoy(cost) {
+    costes = cost;
+    console.log(costes);
+    document.getElementById("mejor-franja").innerHTML = bestCostNow(costes);
 }
 obtenerPreciosHoy(preciosHoy);
 function listarDispositivo(data){
@@ -67,4 +69,4 @@ function encenderApagarClick(nombre, accion) {
     encenderApagar(function () { }, context)
 }
 obtenerTodosLosDispositivos(listarDispositivo);
-document.getElementById("mejor-franja").innerHTML = bestCostNow(costes);
+
