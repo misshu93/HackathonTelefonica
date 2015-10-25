@@ -46,6 +46,7 @@ function generarAlertaEnergia(alerts) {
 	    type: "danger"
 	});
 	ponerColor("rojo");
+    ejecutarSonido("1:1:1:1:1:1:1");
     } else if (isPowerExceeded == 0) {
 	alerts.push({
 	    name: "Consumo eléctrico",
@@ -53,6 +54,7 @@ function generarAlertaEnergia(alerts) {
 	    type: "warning"
 	});
 	ponerColor("amarillo");
+    ejecutarSonido("0");
     } else {
 	alerts.push({
 	    name: "Consumo eléctrico",
@@ -60,6 +62,7 @@ function generarAlertaEnergia(alerts) {
 	    type: "success"
 	});
 	ponerColor("verde");
+    ejecutarSonido("0");
     };
     return alerts;
 }
@@ -118,9 +121,9 @@ $("#calcular").click(function () {
     $("#mejor-franja-dia").empty();
     $("#ahorro-dia").empty();
     $("#mejor-franja-mejor").append(mejorFranja.hour + ":00 - " + (mejorFranja.hour + 1) + ":00");
-    $("#ahorro-limitado").append(ahorroLimitado);
+    $("#ahorro-limitado").append(ahorroLimitado.toFixed(4));
     $("#mejor-franja-dia").append(mejorFranjaDia);
-    $("#ahorro-dia").append(ahorroDia);
+    $("#ahorro-dia").append(ahorroDia.toFixed(4));
     calculo = fringeBestCost(desde, hasta, costes);
     console.log(calculo);
     $("#datos").show(500);

@@ -94,7 +94,7 @@ function limitState(limit, devices) {
 }
 
 function savingDevice(cost, costs, device, devices) {
-    return (cost.pvpc - deviceCost(device, devices, costs));
+    return (deviceConsumption(device, devices)*cost.pvpc - deviceCost(device, devices, costs));
 }
 
 function limitLight(limit) {

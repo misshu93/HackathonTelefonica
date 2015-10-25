@@ -1,4 +1,4 @@
-﻿
+
 function ponerColor(color, funcionCallback) {
     var value = {};
 
@@ -44,9 +44,9 @@ function ponerColor(color, funcionCallback) {
     });
 }
 
-function ejecutarSonido(funcionCallback) {
+function ejecutarSonido(sonido, funcionCallback) {
     var value = {};
-    value.value = "1:3:1000:1Cb.C:3F.B";
+    value.value = sonido;
 
     $.ajax({
         method: "POST",
