@@ -86,9 +86,9 @@ $("#calcular").click(function () {
     var hasta = document.getElementById("Hasta").value;
     $("#datos").show(500);
     var mejorFranja = fringeBestCost(desde, hasta, costes);
-    var ahorroLimitado = savingDevice(mejorFranja, costes, device,context);
+    var ahorroLimitado = savingDevice(mejorFranja, costes, device,context.value);
     var mejorFranjaDia = bestCostNow(costes).hour + ":00 - " + (bestCostNow(costes).hour + 1) + ":00"
-    var ahorroDia = savingDevice(bestCostNow(costes), costes, device,context);
+    var ahorroDia = savingDevice(bestCostNow(costes), costes, device,context.value);
     $("#mejor-franja").append(mejorFranja);
     $("#ahorro-limitado").append(ahorroLimitado);
     $("#mejor-franja-dia").append(mejorFranjaDia);
