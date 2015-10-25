@@ -41,21 +41,13 @@
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
                 <a class="navbar-brand" href="index.html">SMARTBILL</a>
             </div>
 
+
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
                     <li class="page-scroll">
                         <a href="#portfolio">Bienvenido, Telefónica.</a>
                     </li>
@@ -108,7 +100,7 @@
                         </div>
                         <div class="col-xs-9 text-right">
                             <div><h4>Mejor franja:</h4></div>
-                            <div class="huge">13</div>
+                            <div class="huge" id="mejor-franja">13</div>
                         </div>
                     </div>
                 </div>
@@ -172,10 +164,98 @@
 
 </div>
 
-<table id="excelDataTable" border="1">
-  </table>
-</body>​
 
+</div>
+<div class="panel panel-primary">
+<div class="panel-heading text-center"><h4>Mejor franja</h4></div>
+<div class="panel-body">
+  <!-- Table -->
+
+  <form class="form-horizontal">
+  <fieldset>
+
+<!-- Select Basic -->
+  <div class="form-group">
+    <div class="col-md-4 col-md-offset-3">
+      <label class="col-md-4 control-label" for="Dispositivo">Dispositivo</label>
+          <select id="Dispositivo" name="Dispositivo" class="form-control">
+          </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="Desde">Desde</label>
+    <div class="col-md-4">
+      <select id="Desde" name="Desde" class="form-control">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+      </select>
+    </div>
+  </div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Hasta">Hasta</label>
+  <div class="col-md-4">
+    <select id="Hasta" name="Hasta" class="form-control">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+      <option value="13">13</option>
+      <option value="14">14</option>
+      <option value="15">15</option>
+      <option value="16">16</option>
+      <option value="17">17</option>
+      <option value="18">18</option>
+      <option value="19">19</option>
+      <option value="20">20</option>
+      <option value="21">21</option>
+      <option value="22">22</option>
+      <option value="23">23</option>
+    </select>
+  </div>
+</div>
+
+</fieldset>
+</form>
+<div class="col-md-4">
+  <button id="calcular">Calcular</button>
+  <div class="panel panel-primary" id="mejor-franja"></div>
+</div>
+</div>
+
+
+</div>
 </div>
 </div>
         <!-- Footer -->
@@ -211,46 +291,7 @@
     <!-- Custom Theme JavaScript -->
     <script src="js/freelancer.js"></script>
     <script src="js/handlebars-v4.0.2.js"></script>
-    <script>
-    var source = $("#dispositivos").html();
-    var template = Handlebars.compile(source);
-    function pintardispositivo(data){
-      var context = data.attributes[0];
-      Handlebars.registerHelper('encendido', function(name) {
-        status = deviceStatus(name,context.value)
-        console.log(status);
-        if (status == "true"){
-          status = "Encendido";
-        }else{
-          status = "Apagado";
-        }
-        return status;
-      });
-      Handlebars.registerHelper('activar', function(name) {
-        status = deviceStatus(name,context.value)
-        console.log(status);
-        if (status == "true"){
-          activar = "Apagar";
-        }else{
-          activar = "Encender";
-        }
-        return activar;
-      });
-      var theCompiledHtml = template(context);
-
-      document.getElementById("consumo").innerHTML =totalConsumption(data.attributes[0].value);
-      $('.content-placeholder').html(theCompiledHtml);
-
-    }
-    obtenerTodosLosDispositivos(pintardispositivo);
-
-    </script>
-    <script>
-    $(document).ready(function () {
-  document.getElementById("consumo").innerHTML =totalConsumption(data.attributes[0].value);
-
-  });
-    </script>
+    <script src="js/integracion.js"></script>
 
 
 </body>
