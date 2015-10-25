@@ -114,40 +114,42 @@
 <div class="panel-heading text-center"><h4>Dispositivos</h4></div>
 <div class="panel-body">
   <!-- Table -->
-<script id="dispositivos" type="text/x-handlebars-template">
-  <table class="table">
-    <thead>
-      <tr>
-        <th><h4>Dispositivo</h4></th>
-        <th><h4>¿Encendido?</h4></th>
-        <th><h4>Encender/Apagar</h4></th>
-        <th><h4>Consumo en kw/h</h4></th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#value}}
-      <tr>
-        <th>{{name}}</th>
-          <th style="color: {{#ifStatus}}green{{else}}red{{/ifStatus}}">
-              {{#ifStatus}}Encendido{{else}}Apagado{{/ifStatus}}
-          </th>
-          <th>
-              <button type="button" class="btn btn-{{#ifStatus}}danger{{else}}success{{/ifStatus}}"
-                      onclick="encenderApagarClick('{{name}}','{{#ifStatus}}encender{{else}}apagar{{/ifStatus}}')">
-                  {{#ifStatus}}
-                  Apagar
-                  {{else}}
-                  Encender
-                  {{/ifStatus}}
-              </button>
-          </th>
-        <th>{{value}}</th>
-      </tr>
-      {{/value}}
-    </tbody>
-  </table>
-</script>
-<div class="content-placeholder table-responsive"></div>
+  <script id="dispositivos" type="text/x-handlebars-template">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="text-center"><h4>Dispositivo</h4></th>
+          <th class="text-center"><h4>¿Encendido?</h4></th>
+          <th class="text-center"><h4>Encender/Apagar</h4></th>
+          <th class="text-center"><h4>Consumo en kw/h</h4></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#value}}
+        <tr>
+          <th class="text-center">{{name}}</th>
+            <th style="color: {{#ifStatus}}green{{else}}red{{/ifStatus}}" class="text-center">
+                {{#ifStatus}}Encendido{{else}}Apagado{{/ifStatus}}
+            </th>
+            <th>
+                <div class="text-center">
+                <button type="button" class="btn btn-{{#ifStatus}}danger{{else}}success{{/ifStatus}}"
+                        onclick="encenderApagarClick('{{name}}','{{#ifStatus}}encender{{else}}apagar{{/ifStatus}}')" class="text-center">
+                    {{#ifStatus}}
+                    Apagar
+                    {{else}}
+                    Encender
+                    {{/ifStatus}}
+                </button>
+              </div>
+            </th>
+          <th class="text-center">{{value}}</th>
+        </tr>
+        {{/value}}
+      </tbody>
+    </table>
+  </script>
+  <div class="content-placeholder table-responsive"></div>
 </div>
 </div>
 
@@ -175,7 +177,7 @@
 
 <!-- Select Basic -->
   <div class="form-group">
-    <div class="col-md-4 col-md-offset-3">
+    <div class="col-md-4 col-md-offset-4">
       <label class="col-md-4 control-label" for="Dispositivo">Dispositivo</label>
           <select id="Dispositivo" name="Dispositivo" class="form-control">
           </select>
