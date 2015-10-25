@@ -58,7 +58,7 @@ var retrieve = function(input, res) {
 	    year: input[0],
 	    month: input[1],
 	    day: input[2]
-	}.sort({
+	}).sort({
 	    hour: 'asc'
 	}).exec(function(e, data){
 	    res.send(JSON.stringify(data));
