@@ -84,12 +84,17 @@ $("#calcular").click(function () {
     device = document.getElementById("Dispositivo").value;
     var desde = document.getElementById("Desde").value;
     var hasta = document.getElementById("Hasta").value;
-
     $("#datos").show(500);
-
+    var mejorFranja = fringeBestCost(desde, hasta, costes);
+    var ahorroLimitado = savingDevice(mejorFranja, costes, device,context);
+    var mejorFranjaDia = bestCostNow(costes).hour + ":00 - " + (bestCostNow(costes).hour + 1) + ":00"
+    var ahorroDia = savingDevice(bestCostNow(costes), costes, device,context);
+    $("#mejor-franja").append(mejorFranja);
+    $("#ahorro-limitado").append(ahorroLimitado);
+    $("#mejor-franja-dia").append(mejorFranjaDia);
+    $("#ahorro-dia").append(ahorroDia);
     calculo = fringeBestCost(desde, hasta, costes);
     console.log(calculo);
-
 });
 function preciosHoy(cost) {
     costes = cost;
