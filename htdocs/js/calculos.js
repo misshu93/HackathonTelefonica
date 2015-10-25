@@ -64,8 +64,8 @@ function fringeBestCost(fringeInf, fringeSup, costs) {
 function getCost(hour, costs) {
     var count;
     for (count = 0; count < costs.length; count++) {
-        if (costs[0].hour === hour) {
-            return costs[0];
+        if (costs[count].hour === hour) {
+            return costs[count];
         }
     }
 }
