@@ -153,14 +153,15 @@
 </div>
 </div>
 
-<div class="panel panel-primary">
-  <div class="panel-heading text-center"><h4>Sensores</h4></div>
+<div class="panel panel-primary"><div class="panel-heading text-center"><h4>Sensores</h4></div>
   <div class="panel-body">
   <script id="avisos" type="text/x-handlebars-template">
-  <div class="alert alert-{{type}}">
-    <h4>{{name}}</h4>
-    <p>{{description}}</p>
-  </div>
+  {{#each .}}
+    <div class="alert alert-{{type}}">
+      <h4>{{name}}</h4>
+      <p>{{description}}</p>
+    </div>
+  {{/each}}
   </script>
   <div id="alert-placeholder" />
   </div>

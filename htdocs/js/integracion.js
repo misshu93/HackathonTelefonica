@@ -46,7 +46,6 @@ function generarAlertas(c) {
 	    type: "success"
 	});
     };
-    console.log(alerts);
     c(alerts);
 };
 
