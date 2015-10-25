@@ -40,21 +40,21 @@ function generarAlertas(c) {
 	    description: "Se está acercando al límite",
 	    type: "danger"
 	});
-	ponerColor(rojo);
+	ponerColor("rojo");
     } else if (isExceeded = 0) {
 	alerts.push({
 	    name: "Consumo eléctrico",
 	    description: "El consumo es alto",
 	    type: "warning"
 	});
-	ponerColor(amarillo);
+	ponerColor("amarillo");
     } else {
 	alerts.push({
 	    name: "Consumo eléctrico",
 	    description: "No hay problemas con el consumo",
 	    type: "success"
 	});
-	ponerColor(verde);
+	ponerColor("verde");
     };
     c(alerts);
 };
