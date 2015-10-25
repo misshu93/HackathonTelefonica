@@ -45,7 +45,7 @@ $(document).ready(function () {
 function preciosHoy(cost) {
     costes = cost;
     console.log(costes);
-    document.getElementById("mejor-franja").innerHTML = bestCostNow(costes);
+    document.getElementById("mejor-franja").innerHTML = bestCostNow(costes).pvpc;
 }
 obtenerPreciosHoy(preciosHoy);
 function listarDispositivo(data){
