@@ -1,4 +1,4 @@
-﻿
+
 var context;
 var desde, hasta;
 var lista;
@@ -70,15 +70,15 @@ function generarAlertaLuz(alerts, c) {
 	if (isLightExceeded) {
 	    alerts.push({
 		name: "Iluminación",
-		description: "Hay una cantidad excesiva de luz",
-		type: "danger"
+		description: "La iluminación es adecuada",
+		type: "info"
 	    });
 	    c(alerts);
 	} else {
 	    alerts.push({
 		name: "Iluminación",
-		description: "La iluminación es adecuada",
-		type: "info"
+		description: "La iluminación es insuficiente",
+		type: "danger"
 	    });
 	    console.log(alerts);
 	    c(alerts);
