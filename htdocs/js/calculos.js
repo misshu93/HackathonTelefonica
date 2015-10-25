@@ -94,3 +94,7 @@ function limitState(limit, devices) {
 function savingDevice(cost, costs, device, devices) {
     return (cost.pvpc - deviceCost(device, devices, costs).pvpc);
 }
+
+function limitLight(limit) {
+    return(limit<100)
+}
