@@ -22,6 +22,8 @@ function refrescarDispositivos(data) {
     var template = Handlebars.compile(source);
     var theCompiledHtml = template(data);
     $('.content-placeholder').empty().html(theCompiledHtml);
+
+    generarAlertas(pintarAlertas);
 }
 
 function pintarAlertas(data) {

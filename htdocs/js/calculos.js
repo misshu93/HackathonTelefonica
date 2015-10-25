@@ -18,7 +18,9 @@ function totalConsumption(devices) {
     var sum, count;
     sum = 0;
     for (count = 0; count < devices.length; count++) {
-        sum = sum + parseFloat(devices[count].value);
+        if (devices[count].metadatas[0].value === "true") {
+            sum = sum + parseFloat(devices[count].value);
+        }
     }
     return sum;
 }
