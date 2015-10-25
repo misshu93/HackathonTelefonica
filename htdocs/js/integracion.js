@@ -48,13 +48,14 @@ $(document).ready(function () {
       $( "#Desde" ).change(function() {
           $("#Hasta").empty();
           listarHorasHasta();
-        console.log(desde);
       });
 
     $("#calcular").click(function () {
         device = document.getElementById("Dispositivo").value;
+        var desde = document.getElementById("Desde").value;
+        var hasta = document.getElementById("Hasta").value;
         calculo = fringeBestCost(desde, hasta, costes);
-        //console.log(calculo);
+        console.log(calculo);
     });
 
 });
