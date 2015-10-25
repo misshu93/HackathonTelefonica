@@ -24,7 +24,7 @@ function refrescarDispositivos(data) {
     var template = Handlebars.compile(source);
     var theCompiledHtml = template(data);
     $('.content-placeholder').empty().html(theCompiledHtml);
-
+    $("#consumo").text(totalCost(data.value, costes) + " € / hora");
     var alertas = [];
     generarAlertaEnergia(alertas);
     generarAlertaLuz(alertas, pintarAlertas);
