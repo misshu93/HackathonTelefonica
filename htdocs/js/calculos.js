@@ -51,9 +51,11 @@ function deviceStatus(device, devices) {
 }
 
 function fringeBestCost(fringeInf, fringeSup, costs) {
-    var best, count;
+    var best, count, inf, sup;
+    inf = parseInt(fringeInf);
+    sup = parseInt(fringeSup);
     best = null;
-    for (count = fringeInf; count <= fringeSup; count++) {
+    for (count = inf; count <= sup; count++) {
         if (best === null || costs[count].pvpc < best) {
             best = costs[count];
         }
