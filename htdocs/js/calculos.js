@@ -50,10 +50,10 @@ function deviceStatus(device, devices) {
     return d.metadatas[0].value;
 }
 
-function bestCost(costs) {
+function fringeBestCost(fringeInf, fringeSup, costs) {
     var best, count;
     best = null;
-    for (count = 0; count < costs.length; count++) {
+    for (count = fringeInf; count <= fringeSup; count++) {
         if (best === null || costs[count].pvpc < best) {
             best = costs[count];
         }
@@ -74,25 +74,17 @@ function totalCost(devices, cost) {
     return totalConsumption(devices) * nowCost(cost);
 }
 
-function fringeDevice(fringeInf, fringeSup, device, devices, cost) {
-    var c, i, d;
-    d = getDevice(device, devices);
-    c = [];
-    i = fringeInf;
-    while (i <= fringeSup) {
-        c.push(getCost(i, cost));
-        i++;
+function bestCostNow(costs) {
+    var h = getHour();
+    return fringeBestCost(h, 23, costs);
+}
+
+function limitState(limit, devices) {
+    var c = totalConsumption(devices);
+    if (c >= limit * 0.90) {
+        return 1;
+    } else if (c >= limit * 0.70) {
+        return 0;
     }
-    bestCost(c);
+    return -1;
 }
-
-function isLimitNear(limit, devices) {
-    var c = totalConsumption(devices);
-    return (c >= limit * 0.90);
-}
-
-function isLimitFar(limit, devices) {
-    var c = totalConsumption(devices);
-    return (c >= limit * 0.50);
-}
-
