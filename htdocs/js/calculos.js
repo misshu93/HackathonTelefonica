@@ -73,7 +73,7 @@ function getCost(hour, costs) {
 }
 
 function totalCost(devices, cost) {
-    return totalConsumption(devices) * nowCost(cost).pvpc;
+    return (totalConsumption(devices) * nowCost(cost).pvpc).toFixed(4);
 }
 
 function bestCostNow(costs) {
