@@ -27,7 +27,7 @@ function totalConsumption(devices) {
 
 function deviceConsumption(device, devices) {
     var d = getDevice(device, devices);
-    if (d.status === "true") {
+    if (d.metadatas[0].value === "true") {
         return parseFloat(d.value);
     }
     return 0;
@@ -44,7 +44,7 @@ function nowCost(costs) {
 }
 
 function deviceCost(device, devices, costs) {
-    return deviceConsumption(device, devices) * nowCost(costs);
+    return deviceConsumption(device, devices) * nowCost(costs).pvpc;
 }
 
 function deviceStatus(device, devices) {
@@ -75,7 +75,7 @@ function getCost(hour, costs) {
 }
 
 function totalCost(devices, cost) {
-    return (totalConsumption(devices) * nowCost(cost).pvpc).toFixed(4);
+    return (totalConsumption(devices) * parseFloat(nowCost(cost).pvpc)).toFixed(4);
 }
 
 function bestCostNow(costs) {
@@ -94,7 +94,7 @@ function limitState(limit, devices) {
 }
 
 function savingDevice(cost, costs, device, devices) {
-    return (cost.pvpc - deviceCost(device, devices, costs).pvpc);
+    return (cost.pvpc - deviceCost(device, devices, costs));
 }
 
 function limitLight(limit) {
