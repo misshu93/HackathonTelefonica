@@ -36,7 +36,7 @@ function nowCost(costs) {
     h = getHour();
     for (count = 0; count < costs.length; count++) {
         if (costs[count].hour === h) {
-            return costs[count].pvpc;
+            return costs[count]
         }
     }
 }
@@ -73,7 +73,7 @@ function getCost(hour, costs) {
 }
 
 function totalCost(devices, cost) {
-    return totalConsumption(devices) * nowCost(cost);
+    return totalConsumption(devices) * nowCost(cost).pvpc;
 }
 
 function bestCostNow(costs) {

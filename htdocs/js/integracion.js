@@ -10,7 +10,7 @@ function pintarDispositivo(data) {
   
   var theCompiledHtml = template(context);
 
-  document.getElementById("consumo").innerHTML =totalConsumption(data.attributes[0].value);
+  document.getElementById("consumo").innerHTML =totalCost(data.attributes[0].value, costes);
   $('.content-placeholder').html(theCompiledHtml);
 
 }
