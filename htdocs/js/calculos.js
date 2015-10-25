@@ -41,8 +41,8 @@ function nowCost(costs) {
     }
 }
 
-function deviceCost(device, devices, cost) {
-    return deviceConsumption(device, devices) * nowCost(cost);
+function deviceCost(device, devices, costs) {
+    return deviceConsumption(device, devices) * nowCost(costs);
 }
 
 function deviceStatus(device, devices) {
@@ -87,4 +87,8 @@ function limitState(limit, devices) {
         return 0;
     }
     return -1;
+}
+
+function savingDevice(cost, costs, device, devices) {
+    return (cost.pvpc - deviceCost(device, devices, costs).pvpc);
 }
